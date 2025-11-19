@@ -1,6 +1,7 @@
-import pygame
-import random
 import math
+import random
+
+import pygame
 
 # ---------- Konstanta ----------
 WIDTH, HEIGHT = 900, 540
@@ -19,6 +20,7 @@ BALL_MAX_SPEED = 12
 
 SCORE_FONT_SIZE = 48
 COUNTDOWN_FONT_SIZE = 64
+
 
 # ---------- Kelas ----------
 class Paddle:
@@ -199,7 +201,9 @@ def main():
 
             # Pantulan paddle pemain
             if ball.rect.colliderect(player.rect) and ball.vx < 0:
-                offset = (ball.rect.centery - player.rect.centery) / (player.rect.height / 2)
+                offset = (ball.rect.centery - player.rect.centery) / (
+                    player.rect.height / 2
+                )
                 offset = max(-1.0, min(1.0, offset))
                 ball.rect.left = player.rect.right  # nudge keluar
                 ball.bounce_x(offset)
@@ -240,7 +244,9 @@ def main():
         if show_countdown:
             count = int(max(0, 3 - elapsed)) + (1 if elapsed < 3 else 0)
             if count > 0 and count <= 3:
-                render_text_center(screen, str(count), countdown_font, WHITE, HEIGHT // 2)
+                render_text_center(
+                    screen, str(count), countdown_font, WHITE, HEIGHT // 2
+                )
 
         pygame.display.flip()
 
